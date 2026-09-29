@@ -27,7 +27,7 @@ Produit des **vidéos pédagogiques en motion design** : texte et code animés, 
 
 ## Installation en 3 étapes
 
-1. Cloner le dépôt : `git clone <adresse-du-depot> motion-video`, puis `npm i puppeteer-core` dans le dossier.
+1. Cloner le dépôt : `git clone https://github.com/No-Dream-Ai/motion-video.git motion-video`, puis `npm i puppeteer-core` dans le dossier.
 2. `pip install edge-tts`, puis vérifier `ffmpeg -version` et `node -v` (et définir `CHROME_PATH` si Chrome n'est pas au chemin par défaut).
 3. Remplacer les exemples de `motion/data/epNN.json` par vos scènes (et les textes CTA de `make_course.py`).
 
