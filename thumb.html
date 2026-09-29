@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><title>thumb</title>
+<style>
+  *{margin:0;box-sizing:border-box}
+  html,body{width:1280px;height:720px;overflow:hidden;background:#FAF7EF;font-family:"Trebuchet MS","Segoe UI",sans-serif}
+  #t{position:relative;width:1280px;height:720px;background:#FAF7EF}
+  .win{position:absolute;right:-40px;bottom:-60px;width:560px;height:420px;background:#fff;border:1px solid #E4DCC8;border-radius:20px;box-shadow:22px 24px 0 #E7DECB;overflow:hidden;opacity:.9}
+  .bar{position:absolute;top:0;left:0;width:100%;height:54px;background:#F0EADA;border-bottom:1px solid #E4DCC8}
+  .dot{position:absolute;top:20px;width:15px;height:15px;border-radius:50%}
+  .ln{position:absolute;border-radius:6px;height:14px}
+  .badge{position:absolute;left:72px;top:80px;background:#E48A1C;color:#fff;font-weight:bold;font-size:30px;
+         letter-spacing:.04em;padding:14px 30px;border-radius:999px}
+  .hook{position:absolute;left:68px;top:200px;width:760px;font-weight:900;line-height:.98;letter-spacing:-2px;
+        text-transform:uppercase;color:#20201E}
+  .or{color:#E48A1C}
+  .wm{position:absolute;left:72px;bottom:120px;font-family:"JetBrains Mono","Consolas",monospace;font-size:42px;font-weight:bold;color:#20201E}
+  .brand{position:absolute;left:72px;bottom:56px;font-size:26px;font-weight:bold;letter-spacing:.2em;text-transform:uppercase;color:#A89F88}
+</style></head><body>
+<div id="t"></div>
+<script>
+const O="#E48A1C";
+const TH={
+ 1:{badge:"COURS 1 · ÉPISODE 1", hook:[["C'EST"]], hook2:[["QUOI ?","or"]], wm:"Claude Code", fs:150},
+ 2:{badge:"ÉPISODE 2", hook:[["ON "],["INSTALLE","or"]], wm:"Claude Code", fs:140},
+ 3:{badge:"ÉPISODE 3", hook:[["SKILLS · "],["MCP","or"]], hook2:[["GITHUB"]], wm:"Claude Code", fs:108},
+ 4:{badge:"ÉPISODE 4", hook:[["HOOKS & "],["SDK","or"]], wm:"Claude Code", fs:140},
+ 5:{badge:"ÉPISODE 5", hook:[["DEVIENS "],["PRO","or"]], wm:"Claude Code", fs:140},
+ long:{badge:"LE COURS COMPLET", hook:[["CLAUDE"]], hook2:[["CODE","or"]], wm:"5 épisodes · 14 min", fs:150},
+};
+function run(){
+  const p=new URLSearchParams(location.search).get("i")||"1";
+  const d=TH[p]||TH["1"]; const t=document.getElementById("t");
+  // fenêtre IDE motif
+  const w=document.createElement("div");w.className="win";
+  const bar=document.createElement("div");bar.className="bar";w.appendChild(bar);
+  [["#E2705C",24],["#E6B34A",50],["#7FB061",76]].forEach(([c,x])=>{const o=document.createElement("div");o.className="dot";o.style.cssText+=`left:${x}px;background:${c}`;w.appendChild(o);});
+  [180,120,200,150,90,170,130].forEach((wd,i)=>{const l=document.createElement("div");l.className="ln";l.style.cssText+=`left:34px;top:${84+i*40}px;width:${wd}px;background:${i%4===0?O:'#E0D9C9'}`;w.appendChild(l);});
+  t.appendChild(w);
+  // étincelle
+  const ns="http://www.w3.org/2000/svg";const s=document.createElementNS(ns,"svg");
+  s.setAttribute("viewBox","0 0 100 100");s.setAttribute("width","150");s.setAttribute("height","150");
+  s.style.cssText="position:absolute;right:80px;top:70px";
+  s.innerHTML=`<g stroke="${O}" stroke-width="7" stroke-linecap="round"><line x1="50" y1="10" x2="50" y2="33"/><line x1="50" y1="67" x2="50" y2="90"/><line x1="10" y1="50" x2="33" y2="50"/><line x1="67" y1="50" x2="90" y2="50"/><line x1="22" y1="22" x2="38" y2="38"/><line x1="62" y1="62" x2="78" y2="78"/><line x1="78" y1="22" x2="62" y2="38"/><line x1="38" y1="62" x2="22" y2="78"/></g><circle cx="50" cy="50" r="9" fill="${O}"/>`;
+  t.appendChild(s);
+  // badge
+  const b=document.createElement("div");b.className="badge";b.textContent=d.badge;t.appendChild(b);
+  // hook (1 ou 2 lignes)
+  function line(segs,top,fs){const h=document.createElement("div");h.className="hook";h.style.top=top+"px";h.style.fontSize=fs+"px";
+    segs.forEach(seg=>{const sp=document.createElement("span");if(seg[1])sp.className="or";sp.textContent=seg[0];h.appendChild(sp);});t.appendChild(h);}
+  if(d.hook2){ line(d.hook,210,d.fs); line(d.hook2,210+d.fs*1.0,d.fs); }
+  else line(d.hook,250,d.fs);
+  // wordmark + brand
+  const wm=document.createElement("div");wm.className="wm";wm.textContent="› "+d.wm;t.appendChild(wm);
+  const br=document.createElement("div");br.className="brand";br.textContent="MonCours";t.appendChild(br);
+}
+run();
+</script></body></html>

@@ -1,0 +1,178 @@
+[
+ {
+  "type": "title",
+  "vo": "Claude Code, c'est une IA qui code dans ton terminal. Avant de l'utiliser, faut d'abord l'installer.",
+  "title": "Installer Claude Code",
+  "subtitle": "Une IA qui code dans ton terminal"
+ },
+ {
+  "type": "terminal",
+  "vo": "Sur macOS ou Linux, c'est une ligne de commande bash. Sur Windows, une autre pour PowerShell. L'installation est automatique, et Claude Code se met à jour tout seul en arrière-plan.",
+  "term": [
+   {
+    "text": "# macOS / Linux",
+    "kind": "out"
+   },
+   {
+    "text": "curl -fsSL https://claude.ai/install.sh | bash",
+    "kind": "cmd"
+   },
+   {
+    "text": "# Windows / PowerShell",
+    "kind": "out"
+   },
+   {
+    "text": "irm https://claude.ai/install.ps1 | iex",
+    "kind": "cmd"
+   },
+   {
+    "text": "Installation terminee. Mises a jour automatiques activees.",
+    "kind": "ok"
+   }
+  ],
+  "caption": "Installation automatique, mise a jour en arriere-plan."
+ },
+ {
+  "type": "terminal",
+  "vo": "Ensuite tu tapes « claude » dans ton terminal. C'est tout. La première fois seulement, tu entres tes identifiants Claude. Une fois fait, tu n'auras plus besoin de te reconnecter.",
+  "term": [
+   {
+    "text": "claude",
+    "kind": "cmd"
+   },
+   {
+    "text": "Premiere connexion : authentification requise...",
+    "kind": "out"
+   },
+   {
+    "text": "Identifiants Claude enregistres.",
+    "kind": "ok"
+   },
+   {
+    "text": "Session prete. Plus besoin de te reconnecter.",
+    "kind": "ok"
+   }
+  ],
+  "caption": "Tu tapes claude. Connexion une seule fois."
+ },
+ {
+  "type": "statement",
+  "vo": "Maintenant tu es dans une session. Claude voit l'intégralité de ton projet : chaque fichier, chaque dossier, comment ils se connectent entre eux. C'est ça qui le rend vraiment puissant.",
+  "keyword": "tout",
+  "lead": "Claude voit tout ton projet : chaque fichier, chaque dossier, et comment ils se connectent."
+ },
+ {
+  "type": "verb",
+  "vo": "Tu peux lui poser une question simple, genre « qu'est-ce que ce projet fait ? » et Claude analyse tout en une seconde.",
+  "verb": "DEMANDE",
+  "body": "« Ce projet fait quoi ? » — et Claude analyse tout en une seconde."
+ },
+ {
+  "type": "code",
+  "vo": "Claude te donne un résumé. Mais le vrai truc, c'est qu'il comprend pas juste l'idée générale : il sait où trouver chaque ligne de code pertinente.",
+  "lines": [
+   "// src/auth/login.js",
+   "export function connecterUtilisateur(email, motDePasse) {",
+   "  const session = creerSession(email);",
+   "  return session.token;",
+   "}"
+  ],
+  "highlight": 2,
+  "caption": "Il sait ou trouver chaque ligne pertinente."
+ },
+ {
+  "type": "code",
+  "vo": "Pour lui donner encore plus de contexte, tu crées un fichier spécial appelé « CLAUDE.md ». C'est là que tu écris tes règles projet, tes conventions, tout ce qu'il faut savoir.",
+  "lines": [
+   "# CLAUDE.md",
+   "",
+   "## Regles du projet",
+   "- Respecter les conventions de nommage",
+   "- Documenter chaque composant"
+  ],
+  "highlight": 0,
+  "caption": "CLAUDE.md : tes regles, tes conventions, ton contexte."
+ },
+ {
+  "type": "code",
+  "vo": "Exemple : « on utilise React et TypeScript. L'état global c'est Context API. Tous les composants doivent avoir PropTypes documentées. » Claude relit ce fichier au début de chaque session.",
+  "lines": [
+   "## Stack technique",
+   "- React + TypeScript",
+   "- Etat global : Context API",
+   "- Tous les composants : PropTypes documentees"
+  ],
+  "highlight": 1,
+  "caption": "Claude relit ce fichier au debut de chaque session."
+ },
+ {
+  "type": "verb",
+  "vo": "Une fois qu'il a compris ton projet, tu peux lui demander des changements. Genre « ajoute un bouton de logout dans la barre de navigation ».",
+  "verb": "MODIFIE",
+  "body": "« Ajoute un bouton logout dans la barre de navigation. »"
+ },
+ {
+  "type": "diff",
+  "vo": "Claude explore le code, localise le bon fichier, te montre exactement ce qu'il va ajouter. Tu vois la différence avant d'accepter ou de refuser.",
+  "minus": [
+   "  <NavLink href=\"/profil\">Profil</NavLink>"
+  ],
+  "plus": [
+   "  <NavLink href=\"/profil\">Profil</NavLink>",
+   "  <button onClick={deconnexion}>Logout</button>"
+  ],
+  "caption": "Tu vois la difference avant d'accepter ou de refuser."
+ },
+ {
+  "type": "cards",
+  "vo": "Pas d'auto-acceptation par défaut. Tu approuves ou rejettes à chaque fois. C'est une vraie collaboration : Claude propose, toi tu décides.",
+  "cards": [
+   {
+    "label": "Claude propose",
+    "sub": "Il montre le changement"
+   },
+   {
+    "label": "Tu decides",
+    "sub": "Tu approuves ou tu rejettes"
+   }
+  ],
+  "caption": "Pas d'auto-acceptation par defaut : tu gardes la main."
+ },
+ {
+  "type": "terminal",
+  "vo": "Si tu veux que ça aille plus vite, tu peux activer un mode où Claude accepte ses propres édits de fichiers sans demander. Tu gardes toujours le contrôle avec un bouton : tu peux le désactiver n'importe quand.",
+  "term": [
+   {
+    "text": "[Shift+Tab] -> Mode auto-accept active",
+    "kind": "ok"
+   },
+   {
+    "text": "Claude applique ses edits sans demander.",
+    "kind": "out"
+   },
+   {
+    "text": "[Shift+Tab] -> Mode auto-accept desactive",
+    "kind": "out"
+   }
+  ],
+  "caption": "Shift+Tab pour basculer. Tu peux couper n'importe quand."
+ },
+ {
+  "type": "recap",
+  "vo": "Et voilà. Tu as Claude Code qui tourne, qui sait ce que tu fais, qui respecte tes règles, et qui modifie ton code sur demande. Bienvenue dans le développement avec l'IA.",
+  "chips": [
+   "Installe",
+   "Comprend ton projet",
+   "Respecte tes regles",
+   "Modifie ton code"
+  ],
+  "punch": "Bienvenue dans le developpement avec l'IA."
+ },
+ {
+  "type": "statement",
+  "vo": "Dans le prochain épisode, on te montre comment l'utiliser pour des vraies tâches : refactoriser, debug, écrire des tests, automatiser ton workflow.",
+  "keyword": "vraies",
+  "lead": "Prochain episode : de vraies taches. Refactoriser, debug, ecrire des tests, automatiser ton workflow.",
+  "isOutro": true
+ }
+]

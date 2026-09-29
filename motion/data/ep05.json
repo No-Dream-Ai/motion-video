@@ -1,0 +1,151 @@
+[
+ {
+  "type": "statement",
+  "vo": "D'abord, un recap. Claude Code, c'est l'IA qui comprend TON code entier. Pas un bout, pas un résumé : tout. Ça fait ses réponses incroyablement précises. Dessus, tu empiles des super-pouvoirs.",
+  "keyword": "entier",
+  "lead": "Claude Code comprend ton code entier."
+ },
+ {
+  "type": "verb",
+  "vo": "MCP, ça veut dire Model Context Protocol. C'est ta clé pour ouvrir les portes : GitHub, Slack, Stripe, Google, ta base de données. Une fois connecté, Claude y accède direct, sans copier-coller.",
+  "verb": "CONNECTE",
+  "body": "MCP relie Claude à GitHub, Slack, Stripe ou ta base de données."
+ },
+ {
+  "type": "code",
+  "vo": "Les hooks, c'est de l'automation pure. Tu dis à Claude : « après chaque commit, lance ce script ». Ou « avant cette commande, vérifie que c'est safe ». Pas de magie, juste du déterminisme.",
+  "lines": [
+   "// .claude/hooks.json",
+   "{",
+   "  \"after_commit\": \"npm test\",",
+   "  \"before_command\": \"verifie_safe.sh\"",
+   "}"
+  ],
+  "highlight": 2,
+  "caption": "Un hook se déclenche tout seul, à chaque fois."
+ },
+ {
+  "type": "code",
+  "vo": "Les skills, tu les écris une fois, après Claude les utilise partout, tout seul. Un skill c'est une procédure : « voici comment formater du code », « voici comment tester une API ». Zéro redite.",
+  "lines": [
+   "# SKILL.md",
+   "## Formater le code",
+   "1. Lancer prettier sur les fichiers modifiés",
+   "2. Verifier le lint",
+   "3. Proposer le diff"
+  ],
+  "highlight": 0,
+  "caption": "Écrit une fois, réutilisé partout, automatiquement."
+ },
+ {
+  "type": "code",
+  "vo": "Contexte infini avec la mémoire locale. Tu stockes des docs, des décisions, des conventions dans CLAUDE.md. Chaque session, Claude la relit. Jamais d'oubli, jamais de perte.",
+  "lines": [
+   "# CLAUDE.md",
+   "- Conventions : tabs, pas d'espaces",
+   "- Decision : Postgres, pas Mongo",
+   "- Ne jamais toucher la navbar sans accord"
+  ],
+  "highlight": 0,
+  "caption": "Relu à chaque session : jamais d'oubli."
+ },
+ {
+  "type": "verb",
+  "vo": "Les workflows multi-agents, c'est ton arme secrète. Tu décris une grosse tâche, Claude écrit un script qui crée 3-4 agents en parallèle. Chacun fait sa partie, résultats fusionnent, tu attends juste.",
+  "verb": "PARALLÉLISE",
+  "body": "Plusieurs agents traitent la tâche en même temps, puis fusionnent."
+ },
+ {
+  "type": "diff",
+  "vo": "Checkpoints, c'est ta sauvegarde de sécurité. Avant de toucher à du code important, tu dis « snapshot ». Si ça casse, rewind instantané. Pas du Git, c'est du « undo local ».",
+  "minus": [
+   "Code cassé après une modif risquée"
+  ],
+  "plus": [
+   "Snapshot avant",
+   "Rewind instantané, undo local"
+  ],
+  "caption": "Une sauvegarde locale, restaurée en un instant."
+ },
+ {
+  "type": "cards",
+  "vo": "Les permissions, c'est pas du paranoia. Tu dis précis : Claude peut lire ICI, écrire LÀ, jamais supprimer. C'est du pouvoir sans danger.",
+  "cards": [
+   {
+    "label": "Lire",
+    "sub": "autorisé ici"
+   },
+   {
+    "label": "Écrire",
+    "sub": "autorisé là"
+   },
+   {
+    "label": "Supprimer",
+    "sub": "jamais"
+   }
+  ],
+  "caption": "Du pouvoir cadré, sans danger."
+ },
+ {
+  "type": "code",
+  "vo": "L'API Claude directement, tu peux la glisser dans n'importe quel code : Python, JavaScript, Node, même Go. Des appels simples, les réponses arrivent en streaming, tu peux utiliser des outils dedans.",
+  "lines": [
+   "import anthropic",
+   "client = anthropic.Anthropic()",
+   "flux = client.messages.stream(",
+   "  model=\"claude-opus-4-8\",",
+   "  messages=messages)"
+  ],
+  "highlight": 2,
+  "caption": "Quelques lignes, et les réponses arrivent en streaming."
+ },
+ {
+  "type": "cards",
+  "vo": "Maintenant, trois routes possibles. Continuer avec Claude Code en local, c'est le plus simple pour apprendre. Ou plonger dans la CLI pour du scripting hardcore. Ou l'API pour intégrer dans ta vraie app.",
+  "cards": [
+   {
+    "label": "Local",
+    "sub": "le plus simple pour apprendre"
+   },
+   {
+    "label": "CLI",
+    "sub": "scripting hardcore"
+   },
+   {
+    "label": "API",
+    "sub": "intégrer dans ta vraie app"
+   }
+  ],
+  "caption": "Trois routes, selon où tu veux aller."
+ },
+ {
+  "type": "tree",
+  "vo": "Pour approfondir : la doc officielle de Claude Code et l'API, c'est ta bible. Discord, GitHub Discussions, c'est où les vrais posent les vraies questions et reçoivent des réponses de pro.",
+  "items": [
+   {
+    "label": "Doc officielle Claude Code",
+    "hot": true
+   },
+   {
+    "label": "Doc API"
+   },
+   {
+    "label": "Discord"
+   },
+   {
+    "label": "GitHub Discussions"
+   }
+  ],
+  "caption": "Où trouver les vraies réponses."
+ },
+ {
+  "type": "recap",
+  "vo": "Dernière marche : la séquence de maîtrise. Phase 1, tu casses du code sans peur, tu joues, tu apprends. Phase 2, tu répètes la même tâche cinq fois ? Tu crées une skill. Phase 3, tu es assez fort pour inventer tes propres workflows.",
+  "chips": [
+   "Apprendre",
+   "Créer une skill",
+   "Inventer tes workflows"
+  ],
+  "punch": "Casse, automatise, domine."
+ }
+]

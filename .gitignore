@@ -1,0 +1,15 @@
+node_modules/
+package-lock.json
+__pycache__/
+*.pyc
+.env
+.env.*
+_course_build/
+*.mp4
+*.mp3
+*-META.json
+ep*-SHORT.json
+course-LONGUE.json
+.venv/
+.DS_Store
+Thumbs.db

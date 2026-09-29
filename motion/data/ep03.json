@@ -1,0 +1,188 @@
+[
+ {
+  "type": "verb",
+  "vo": "Premièrement : les skills. Une skill, c'est ta propre commande slash. Au lieu de copier-coller tes instructions, tu les invoques avec /deploy ou /test-app. Fini la répétition.",
+  "verb": "INVOQUE",
+  "body": "Une skill, c'est ta propre commande slash : /deploy au lieu de copier-coller tes instructions."
+ },
+ {
+  "type": "tree",
+  "vo": "Une skill ça vit dans un dossier spécial : ~/.claude/skills/ma-skill/ avec un fichier SKILL.md dedans. Ce fichier contient tes instructions, et Claude les charge quand tu invoques la skill avec /ma-skill.",
+  "items": [
+   {
+    "label": "~/.claude/"
+   },
+   {
+    "label": "  skills/"
+   },
+   {
+    "label": "    ma-skill/"
+   },
+   {
+    "label": "      SKILL.md",
+    "hot": true
+   }
+  ],
+  "caption": "Une skill vit dans un dossier dédié, avec un SKILL.md dedans."
+ },
+ {
+  "type": "code",
+  "vo": "Le SKILL.md a deux parties : en haut, du YAML qui dit à Claude comment fonctionne la skill. Dessous, c'est du markdown classique avec les vraies instructions.",
+  "lines": [
+   "---",
+   "name: resume-diff",
+   "description: Résume mes changements git",
+   "---",
+   "# Lance `git diff` puis analyse le résultat."
+  ],
+  "highlight": 4,
+  "caption": "En haut le YAML, en bas les instructions en markdown."
+ },
+ {
+  "type": "terminal",
+  "vo": "Exemple concrèt : tu crées une skill qui résume tes changements git. Elle lance git diff, puis Claude analyse le résultat. Plus besoin de copier-coller le diff manuellement.",
+  "term": [
+   {
+    "text": "/resume-diff",
+    "kind": "cmd"
+   },
+   {
+    "text": "git diff --stat",
+    "kind": "out"
+   },
+   {
+    "text": " 3 fichiers modifiés, 42 insertions(+)",
+    "kind": "out"
+   },
+   {
+    "text": "Résumé prêt : refonte du module auth.",
+    "kind": "ok"
+   }
+  ],
+  "caption": "La skill lance git diff, Claude analyse. Zéro copier-coller."
+ },
+ {
+  "type": "statement",
+  "vo": "Deuxième super-pouvoir : les MCP servers. MCP, c'est Model Context Protocol. Imagine : tu branchess GitHub, Slack, une base de données, Figma directement dans Claude Code.",
+  "keyword": "MCP",
+  "lead": "Model Context Protocol : branche GitHub, Slack, une base, Figma dans Claude Code."
+ },
+ {
+  "type": "terminal",
+  "vo": "Pour ajouter un MCP server, une commande. Tu dis le transport (HTTP pour un service en ligne, stdio pour un programme local), puis le reste. Claude branche l'outil directement.",
+  "term": [
+   {
+    "text": "claude mcp add github --transport http",
+    "kind": "cmd"
+   },
+   {
+    "text": "Connexion au serveur…",
+    "kind": "out"
+   },
+   {
+    "text": "Serveur \"github\" ajouté",
+    "kind": "ok"
+   }
+  ],
+  "caption": "Une commande : tu donnes le transport, Claude branche l'outil."
+ },
+ {
+  "type": "cards",
+  "vo": "Les serveurs HTTP, c'est pour le cloud : GitHub, Slack, Notion. Les serveurs stdio, c'est pour tes outils locaux : un navigateur, une base locale, n'importe quel programme. Deux approches, même résultat.",
+  "cards": [
+   {
+    "label": "HTTP",
+    "sub": "cloud — GitHub, Slack, Notion"
+   },
+   {
+    "label": "stdio",
+    "sub": "local — navigateur, base, programme"
+   }
+  ],
+  "caption": "Deux transports, même résultat : tes outils dans Claude Code."
+ },
+ {
+  "type": "terminal",
+  "vo": "Pour vérifier la connexion, une commande : claude mcp list. Tu vois la liste. Vert c'est connecté, prêt à l'emploi. Jaune c'est besoin d'auth. Rouge c'est un problème.",
+  "term": [
+   {
+    "text": "claude mcp list",
+    "kind": "cmd"
+   },
+   {
+    "text": "github   connecté",
+    "kind": "ok"
+   },
+   {
+    "text": "slack    auth requise",
+    "kind": "out"
+   },
+   {
+    "text": "db       échec de connexion",
+    "kind": "out"
+   }
+  ],
+  "caption": "Vert : connecté. Jaune : auth requise. Rouge : problème."
+ },
+ {
+  "type": "verb",
+  "vo": "Concrètement, tu demandes à Claude : 'Récupère les issues GitHub ouvertes'. Claude appelle le serveur MCP, récupère les vraies données. Pas d'hallucination, du réel.",
+  "verb": "RÉEL",
+  "body": "Claude appelle le serveur MCP et récupère les vraies issues. Pas d'hallucination."
+ },
+ {
+  "type": "statement",
+  "vo": "Troisième pouvoir : GitHub intégration native. Claude voit tes commits, tes PR, tes issues. Il peut créer des branches, coder, et même ouvrir des PR pour toi.",
+  "keyword": "GitHub",
+  "lead": "Intégration native : Claude voit tes commits, tes PR, tes issues — et les crée."
+ },
+ {
+  "type": "diff",
+  "vo": "Claude peut lire une issue GitHub, créer une branche pour la fixer, coder la solution, et ouvrir une PR. Tout ça, tu dis juste : 'Fais le'. Les étapes disparaissent.",
+  "minus": [
+   "lire l'issue à la main",
+   "créer la branche soi-même",
+   "ouvrir la PR manuellement"
+  ],
+  "plus": [
+   "\"Fais-le\"",
+   "Claude lit, branche, code, ouvre la PR"
+  ],
+  "caption": "Les étapes manuelles disparaissent."
+ },
+ {
+  "type": "verb",
+  "vo": "Combiné avec les skills et les MCP servers, tu automatises des workflows complets. Une skill qui dit 'crée une PR', un MCP GitHub qui branche les issues, et voilà : plus d'étapes manuelles.",
+  "verb": "AUTOMATISE",
+  "body": "Une skill qui crée la PR, un MCP qui branche les issues : le workflow complet."
+ },
+ {
+  "type": "cards",
+  "vo": "La vraie puissance ? Combiner tout. Une skill personnalisée qui utilise le MCP GitHub pour créer une PR, lancer les tests, valider tout seul. Tu contrôles le flux, Claude gère la logique.",
+  "cards": [
+   {
+    "label": "Skill",
+    "sub": "crée la PR"
+   },
+   {
+    "label": "MCP GitHub",
+    "sub": "branche les issues"
+   },
+   {
+    "label": "Tests",
+    "sub": "validés tout seuls"
+   }
+  ],
+  "caption": "Tu contrôles le flux, Claude gère la logique."
+ },
+ {
+  "type": "recap",
+  "vo": "Résumé : avec les skills, tu dis à Claude quoi faire. Avec les MCP servers, tu lui donnes accès à tes outils. Avec GitHub, il travaille directement sur ton code. Contexte sous contrôle, zéro friction.",
+  "chips": [
+   "Skills",
+   "MCP servers",
+   "GitHub"
+  ],
+  "punch": "Contexte sous contrôle, zéro friction."
+ }
+]

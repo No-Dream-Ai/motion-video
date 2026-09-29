@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><title>C — Kinetic</title>
+<style>
+  #stage{font-family:"Arial Black","Trebuchet MS",sans-serif;background:#1A1A1E;color:#F4F1E8}
+  .mega{font-weight:900;line-height:.9;letter-spacing:-1px;text-transform:uppercase;white-space:nowrap}
+  .small{font-family:"Trebuchet MS",sans-serif;font-weight:bold;letter-spacing:.04em}
+  .or{color:#E48A1C}
+  .hl{position:absolute;background:#E48A1C}
+</style></head><body>
+<script src="core.js"></script>
+<script>
+window.BG=()=> "#1A1A1E";
+window.BUILD={
+ 1(){ add(E("small","left:100px;top:130px;font-size:24px;letter-spacing:.2em;color:#E48A1C","MONCOURS · ÉPISODE 1"),"rise",{delay:0});
+   add(E("mega","left:96px;top:185px;font-size:205px","CLAUDE"),"slam",{delay:200});
+   add(E("mega or","left:96px;top:390px;font-size:205px","CODE"),"slam",{delay:400});
+   add(E("small","left:104px;top:625px;font-size:34px;color:#D7D2C4","l'assistant qui code "),"rise",{delay:760});
+   add(E("small or","left:455px;top:625px;font-size:34px","vraiment pour toi."),"wipe",{delay:1020,dur:460});
+ },
+ 2(){ add(E("mega","left:96px;top:140px;font-size:80px;color:#9A9484","PAS UN CHATBOT."),"slam",{delay:120});
+   const s=E("hl","left:100px;top:188px;width:690px;height:8px;background:#E24B4A;transform-origin:left"); add(s,"wipe",{delay:560,dur:420});
+   add(E("mega or","left:96px;top:300px;font-size:270px","AGENT."),"slam",{delay:760});
+   add(E("small","left:104px;top:630px;font-size:34px;color:#D7D2C4","un agent qui agit — pas un bot qui parle."),"rise",{delay:1150});
+ },
+ 3(){ add(E("mega","left:96px;top:165px;font-size:175px","IL "),"slam",{delay:120});
+   add(E("mega or","left:380px;top:165px;font-size:175px","LIT"),"slam",{delay:320});
+   const hl=E("hl","left:384px;top:330px;width:330px;height:14px"); add(hl,"wipe",{delay:560,dur:420});
+   add(E("mega","left:96px;top:400px;font-size:175px","TON CODE"),"slam",{delay:720});
+   add(E("small","left:104px;top:625px;font-size:32px;color:#D7D2C4","il fouille, comprend, et trouve le bug."),"rise",{delay:1080});
+ },
+};
+start();
+</script></body></html>

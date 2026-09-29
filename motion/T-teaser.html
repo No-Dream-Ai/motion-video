@@ -1,0 +1,37 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><title>Teaser 9:16</title>
+<style>
+  #stage{font-family:"Trebuchet MS","Segoe UI",sans-serif;background:#FAF7EF;color:#20201E}
+  .kick{font-size:36px;letter-spacing:.22em;text-transform:uppercase;font-weight:bold;color:#C2741A}
+  .h{font-weight:bold;line-height:1.05;letter-spacing:-1px}
+  .mega{font-weight:900;line-height:.92;letter-spacing:-2px;text-transform:uppercase}
+  .or{color:#C2741A} .sub{font-size:40px;color:#55534C;line-height:1.45}
+  .hl{position:absolute;background:#E48A1C}
+</style></head><body>
+<script src="core.js"></script>
+<script>
+window.STAGE_W=1080; window.STAGE_H=1920;
+const O="#E48A1C";
+window.BG=()=> "#FAF7EF";
+window.BUILD={
+ 1(){ add(E("kick","left:80px;top:300px","MonCours"),"rise",{delay:0});
+   kinetic("h","left:80px;top:430px;width:920px;font-size:130px",[["Une IA qui code à ta place ?","or"]],250,80);
+   spark(540,1250,180,900,O,true);
+ },
+ 2(){ add(E("h","left:80px;top:360px;width:920px;font-size:96px;color:#9A9484","Pas un chatbot."),"slam",{delay:150});
+   add(E("mega or","left:80px;top:620px;font-size:300px","AGENT"),"slam",{delay:500});
+   add(E("sub","left:84px;top:1080px;width:900px","Il agit vraiment sur ton code."),"rise",{delay:1050});
+ },
+ 3(){ add(E("kick","left:80px;top:300px","Ce qu'il fait"),"rise",{delay:0});
+   [["Il ","lit."],["Il ","édite."],["Il ","lance."]].forEach((p,i)=>{
+     kinetic("h",`left:80px;top:${430+i*230}px;width:920px;font-size:140px`,[[p[0]],[p[1],"or"]],250+i*220,70);});
+   add(E("sub","left:84px;top:1280px;width:900px;font-size:48px","Toi, tu valides. Toujours."),"rise",{delay:1250});
+ },
+ 4(){ kinetic("h","left:80px;top:360px;width:920px;font-size:104px",[["La vidéo complète\n"],["sur la chaîne","or"]],150,80);
+   add(E("mega or","left:80px;top:760px;font-size:160px","Abonne-toi"),"slam",{delay:800});
+   drawSVG("left:80px;top:1000px;width:300px;height:70px",`<line x1="2" y1="22" x2="92" y2="22" stroke="${O}" stroke-width="5" stroke-linecap="round"/><line x1="76" y1="8" x2="96" y2="22" stroke="${O}" stroke-width="5" stroke-linecap="round"/><line x1="76" y1="36" x2="96" y2="22" stroke="${O}" stroke-width="5" stroke-linecap="round"/>`,1300,420);
+   add(E("kick","left:80px;top:1320px","Learn · IA"),"rise",{delay:1500});
+   spark(540,1560,150,1100,O,true);
+ },
+};
+start();
+</script></body></html>

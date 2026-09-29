@@ -1,0 +1,115 @@
+{
+  "summary": "Panel motion-design : 4 directions artistiques pour la vidéo MonCours ép.1, jugées par un critique adversarial",
+  "agentCount": 5,
+  "logs": [],
+  "result": {
+    "winner": "Direction B — \"Le Poste de Travail\" (code-native IDE), réchauffée et durcie avec les meilleures greffes de A, D et C.",
+    "finalDirection": "SPINE = un seul éditeur de code stylisé MonCours (chrome crème #FAF7EF FIGÉ, sidebar/gouttières sable #F3EEE2/#ECE5D4, encre #20201E, commentaires/line-numbers gris-encre #6B675C). HÉROS = le curseur-narrateur, un caret orange #E48A1C qui est l'agent rendu visible : il tape en steps(), saute par ancres (jamais de glisse de fond), et émet une étincelle (spark 4 branches, scale 0->1 puis FIGE) à chaque action réussie. RÉCHAUFFEMENT (de A) : marges larges, ombres PLATES décalées au lieu de glow, son 'paper-tap' chaud à l'apparition des panneaux, spark récurrent comme signature de marque. CONTINUITÉ (de D) : l'orange ne quitte jamais l'écran entre deux scènes — il glisse hors-cadre à droite puis ré-entre par la gauche (relais), le crème reste strictement immobile. LISIBILITÉ (de C) : un verbe-concept géant encre par scène (LIT/ÉDITE/LANCE...), lisible son coupé, promu depuis un mini-commentaire de gouttière (// il lit). DISCIPLINE COULEUR : 80% crème+encre / 15% orange-focus / 5% sémantique ; UN seul orange actif par frame ; sauge #4F7A3A SEULEMENT pour accepté/réversible (sc.4,11) ; suppression = ligne barrée terracotta désaturée, jamais rouge seul. TYPO : Inter/Söhne-like (titres 96-120px weight 600, corps 30-34px) + JetBrains Mono pour tout le code (chasse fixe = alignement pixel des diffs au rendu headless). ANTI-VIBRATION GARANTI : chaque scène entre une fois (<450ms), se FIGE >=60% de sa durée, sort par relais ; seul mouvement perpétuel toléré = un micro-engrenage/spark isolé en rotation lente sur sc.1/8/10/13. Tout en HTML/CSS/SVG + WAAPI (steps/clip-path/stroke-dashoffset/transform), zéro WebGL, zéro lib, déterministe au seek puppeteer. Le ton reste tutoyé/accessible : un concept = un grand mot + une preuve à l'écran.",
+    "soundPlan": "VO edge-tts FR au centre, posée, c'est le maître (SFX mixés -18 à -22 LUFS sous elle, ducking simple en ffmpeg : bed -6dB dès que la VO parle). PALETTE 'poste de travail feutré', 100% transitoire, ZÉRO drone/nappe qui module (cohérent anti-dérive). Banque de 6 SFX courts, calés à la FRAME exacte des keyframes WAAPI exportées (timestamps déterministes -> chaque son tombe sur la frame d'apparition) : (1) 'paper-tap' mat et chaud ~80ms = apparition de panneau/onglet/carte ; (2) 'key-tac' clavier sec par RAFALE de caractères (jamais par lettre) = typing ; (3) 'soft-click' arrondi = coche/puce/curseur qui se pose ; (4) 'ka-chunk' tampon encreur doux = validation (accepter sc.4, commit sc.9, réversible sc.11) ; (5) 'thunk' grave + shimmer discret = commit réussi + burst de spark ; (6) 'whoosh papier' très léger ~120ms = relais d'orange entre scènes. Bed musical chaleureux MINIMAL et NON bouclé : marimba/ukulélé feutré ~1 note toutes les 2s, présent seulement scène 1 et scène 13 pour encadrer l'épisode (signature 3 notes cristallines sur le spark d'ouverture et de clôture) ; entre les deux, quasi-silence (souffle de salle -42dB constant), aucune mélodie qui boucle. Mixage ffmpeg : pose des 6 SFX via -itsoffset aux timecodes JSON, sidechain/volume-duck du bed sous la VO, normalisation finale -16 LUFS intégré.",
+    "cheapRisks": [
+      "Curseur qui clignote en boucle infinie = tell amateur. Imposer un blink à steps discrets (530ms) qui se FIGE après l'action ; jamais de caret clignotant résiduel en hold de scène.",
+      "Typing 'mitraillette' un SFX par lettre = cheap. Un tic clavier mat par RAFALE de caractères, pas par lettre.",
+      "Glow/néon/dégradés sur l'IDE = look 'fake hacker AI'. Interdire tout box-shadow flou et tout gradient ambiant ; profondeur uniquement par ombres plates décalées (sable/terre).",
+      "Faux code illisible ou avec coquilles à l'écran = casse la crédibilité. Tout snippet visible doit être du français/JS plausible et SANS faute (ex. 'fix: corrige le bug de calcul').",
+      "Barre de progression qui glisse en continu = lit comme mouvement de fond. La remplir par BLOCS en steps, puis figer pleine.",
+      "Engrenage/spark qui tourne sur PLUSIEURS éléments = vibration interdite. Une seule icône isolée minuscule en rotation lente, et uniquement scènes 1/8/10/13.",
+      "Trop d'orange = il ne signifie plus rien. Audit frame par frame : un seul focus orange visible à la fois.",
+      "Transitions crossfade plein écran / zoom de fond = lecture 'dérive'. Uniquement ouverture d'onglet (slide 24px+fade <450ms) puis stop net."
+    ],
+    "grafts": [
+      "De A (chaleur) : chrome IDE en crème mat avec marges généreuses + surfaces sable plates, ombres PLATES décalées (jamais de glow diffus) pour la profondeur ; le 'paper-tap' chaud devient le son d'apparition de chaque panneau ; le spark reste un acteur récurrent (pas qu'un curseur).",
+      "De D (continuité + discipline) : RELAIS D'ORANGE entre scènes — le focus orange (curseur ou icône active) ne disparaît jamais totalement, il glisse hors-cadre puis ré-entre, créant le 'wow' par la transition, pas par l'effet. Règle de fer : UN SEUL élément orange actif par frame (deux = erreur).",
+      "De C (lisibilité son coupé) : le verbe-concept (LIT, ÉDITE, LANCE...) est PROMU d'un commentaire-gouttière sur-dimensionné en grand mot-clé encre, lisible sans audio (rétention/scroll-stop), un seul par scène.",
+      "De A+D : palette sémantique réduite — sauge/vert SEULEMENT pour accepté/réversible, terracotta JAMAIS seule (suppression = barré, pas rouge agressif), pour rester chaleureux et non anxiogène."
+    ],
+    "perSceneFinal": [
+      {
+        "scene": 1,
+        "icon": "Fenêtre IDE crème vide (3 pastilles ●●● + barre titre 'moncours — demo') + caret orange █ clignotant au centre + spark de marque",
+        "motion": "Le crème/chrome est déjà posé (fixe). Le caret tape 'Claude Code' en mono caractère par caractère (steps), puis le sous-titre 'l'assistant qui code vraiment pour toi' se promeut en sans-serif (fade-up 12px, 1 passe). Une étincelle orange jaillit du point final (scale 0->1) et entame SEULE une rotation lente 360°/40s (unique élément vivant). Shimmer 3 notes. Tout le reste fige."
+      },
+      {
+        "scene": 2,
+        "icon": "Deux onglets : 'chatbot.txt' grisé (bulle de texte barrée) vs 'agent' orange actif (icône curseur) + mot-clé géant AGENT",
+        "motion": "L'onglet chatbot.txt glisse-entre puis se grise/recule (opacity->0.4, FIGE). RELAIS : l'orange ré-entre, l'onglet 'agent' s'ouvre par-dessus (slide 24px+fade 380ms) et prend le focus orange. Le mot AGENT (encre, 300px, capitales) se frappe en place ; une barre orange RAYE 'chatbot' (stroke-dashoffset 1 passe) + ka-chunk. Aucun mouvement après. Contraste d'échelle = le wow sobre."
+      },
+      {
+        "scene": 3,
+        "icon": "Sidebar arborescence (src/ components/ utils/) + verbe LIT + point terracotta sur le fichier buggé + loupe SVG",
+        "motion": "En gouttière, // il lit s'écrit puis se promeut en grand mot LIT (encre). Le caret saute de fichier en fichier dans la sidebar (3 highlights orange successifs, sauts ANCRÉS de 180ms, pas de balayage continu), s'arrête sur le coupable : ligne surlignée orange-voile (clip, statique) + soft-click + spark. Le scan est UNE séquence de focus discrets. La loupe se pose et ne rebouge plus. Fige."
+      },
+      {
+        "scene": 4,
+        "icon": "Vue diff côte à côte (numéros de ligne) : lignes '−' terracotta barrées / '+' sauge écrites + boutons ✓ Accepter (sauge) / ✕ Refuser (gris)",
+        "motion": "Le panneau diff se pose (paper-tap). Les lignes '−' apparaissent puis se barrent (strike steps) ; les '+' s'écrivent dessous (typing). Deux boutons montent du bas (fade-up). Le caret 'clique' ✓ -> la coche vire sauge + ka-chunk = tu acceptes. UN seul cycle, aucune pulsation des boutons. Mot-clé ÉDITE en titre, 'tu acceptes ou refuses' en sous-ligne. Fige."
+      },
+      {
+        "scene": 5,
+        "icon": "Panneau terminal bas (prompt $) + verbe LANCE + 3 commandes empilées : npm test, npm run build, git push + barre de build en blocs",
+        "motion": "Le terminal se pose. Le caret tape '$ npm test' (typing par rafale), Entrée -> 'PASS ✓' s'imprime ligne à ligne (soft-click). Idem build : barre qui se remplit par BLOCS ▓ en steps (jamais en glisse) puis FIGE pleine. 'git push' -> flèche ↑ + spark + thunk doux. Chaque sortie apparaît puis reste figée. Aucun curseur clignotant résiduel."
+      },
+      {
+        "scene": 6,
+        "icon": "Écran scindé : gauche picto œil 'TOI · tu supervises' (statique) ; droite agent-curseur orange entouré de 4 mini-icônes lire/modifier/tester/corriger en arc",
+        "motion": "Le panneau gauche s'ouvre et se fige (encre, immobile). À droite, les 4 mini-icônes du cycle s'allument EN SÉQUENCE une seule fois (flashs orange ancrés, 4×120ms en relais) reliées par un trait encre tracé une fois, puis chacune se fige en 'fait' (gris+coche). PAS de boucle perpétuelle — le cycle se joue une fois puis FIGE. Seul le blink de l'agent-curseur persiste discrètement."
+      },
+      {
+        "scene": 7,
+        "icon": "Verbe AUTOMATISÉ + icône presse-papier (copier-coller) barrée + flèche orange directe du curseur DANS un fichier ouvert",
+        "motion": "L'icône 'copier-coller' se pose puis se fait RAYER d'un trait terracotta (steps) et recule (retrait). RELAIS : une flèche orange épaisse file du curseur droit dans le fichier (scaleX depuis l'origine gauche, 380ms) ; le texte s'insère directement (typing) + spark 'écrit' + le fichier fait un micro-rebond unique. 'direct dans les fichiers' en sous-ligne. Geste sec, aucun aller-retour. Fige."
+      },
+      {
+        "scene": 8,
+        "icon": "Verbe PARTOUT + rangée de 5 vignettes-fenêtres : Terminal, VS Code, JetBrains, Web (navigateur), App bureau — chacune avec le même caret orange",
+        "motion": "Les 5 vignettes s'impriment une par une gauche->droite (fade+slide 24px, stagger 80ms, 5 paper-taps rythmés) puis stop. Un fin trait orange relie les 5 en se dessinant d'un trait (stroke-dashoffset 420ms) = 'partout'. Le même caret clignote à l'identique dans chacune (ubiquité). Le spark de marque réapparaît en coin et reprend sa rotation lente isolée. Aucune vignette ne bouge ensuite."
+      },
+      {
+        "scene": 9,
+        "icon": "Panneau Git : graphe de branche (○──○ commit-dots) + champ message de commit + bifurcation",
+        "motion": "La ligne de branche se dessine (stroke-dashoffset 300ms, statique ensuite). Le caret tape le message ('fix: corrige le bug de calcul', typing). Le nœud commit s'allume avec point orange + ka-chunk. Une sous-branche bifurque en diagonale (tracée UNE fois). 'Committed ✓' + thunk grave + spark. Mot-clé GIT en titre. La ligne git ne 'coule' jamais — tout fige posé."
+      },
+      {
+        "scene": 10,
+        "icon": "Verbe PERSONNALISABLE + 3 cartes-config : CLAUDE.md (doc à coin corné), skills (étincelle = motif marque), MCP (prise/connecteur) + micro-engrenage",
+        "motion": "Les 3 cartes se déploient en cascade décalée (stagger 90ms, profondeur par ombres plates sable, paper-taps). Chaque label fade-up. La carte 'skills' fait un pulse de pose unique (scale 0.9->1.05->1). Accent AUTORISÉ : le micro-engrenage de la carte active tourne LENTEMENT (8°/s) — seule rotation continue, isolée et minuscule. Les cartes restent empilées, immobiles."
+      },
+      {
+        "scene": 11,
+        "icon": "Verbe RÉVERSIBLE + bouton Annuler (↩ Ctrl+Z) + arc undo SVG + cadenas sauge 'sécurisé' + état précédent restauré",
+        "motion": "Une modif récente (ligne sauge) est posée ; le caret clique 'Annuler' -> la ligne se retire proprement (reverse-typing steps) et l'état précédent revient (translate court + couleur orange->sable, 240ms). L'arc undo se trace à 270° (stroke-dashoffset, S'ARRÊTE — surtout pas de rotation continue). Un cadenas sauge se ferme avec coche (clac) = sûr. UN seul cycle, pas de va-et-vient undo/redo. Fige."
+      },
+      {
+        "scene": 12,
+        "icon": "Bandeau récap : grand bloc 'AUTONOME' (agent-curseur orange) à gauche + 'TU CONTRÔLES' (interrupteur ON) à droite + trait d'équilibre",
+        "motion": "Reprise des deux pôles (sc.2 et 6) qui se reposent côte à côte (fade-in séquencé synchronisé). 'AUTONOME' à 260px encre. Beat. 'TU' est le SEUL mot orange de la scène (révélé par wipe orange-voile en clip + soulignement spark tracé une fois) = climax typo. L'interrupteur bascule ON en 2 frames (clic franc) + spark. Léger rapprochement des deux pôles (16px chacun, une fois). Fige net sur la phrase clé."
+      },
+      {
+        "scene": 13,
+        "icon": "Onglet 'ep-02-installation' qui s'ouvre + flèche → + logo de la marque + spark de marque + picto play/suivant",
+        "motion": "Ramassage des éléments de la sc.12 (sortie par relais, l'orange glisse hors-cadre). L'onglet 'Épisode 2 → Installation' s'ouvre au centre (slide+fade), le caret orange clignote dessus, une flèche orange se trace vers la droite (300ms) invitant à la suite. Le logo de la marque se repose en bas ; le spark reprend sa rotation lente isolée (rappel symétrique sc.1) + shimmer 3 notes de clôture. Hold long, carton final 100% statique."
+      }
+    ],
+    "ranking": [
+      {
+        "name": "Direction B — Le Poste de Travail (code-native)",
+        "score": 92,
+        "note": "Seule direction qui PROUVE la promesse au lieu de l'illustrer : montrer un vrai IDE qui agit ancre 'il code vraiment pour toi' mieux que toute métaphore. Curseur-narrateur orange + spark-burst = système motion ownable, pas générique. Diffs/coches/commit graph 100% déterministes (steps/blink). Seul vrai risque : froideur dev pour grand-public — neutralisé par chrome crème, grande typo, spark chaleureux."
+      },
+      {
+        "name": "Atelier — papier découpé (A)",
+        "score": 84,
+        "note": "La plus chaude, la plus accessible, meilleure intégration de marque (spark acteur récurrent). Le POSÉ-PAPIER + ombre plate qui se résorbe est tactile et rare dans l'explainer IA (souvent froid/néon). Mais pour un OUTIL DE CODE, la métaphore papier éloigne du produit réel et frôle le Kurzgesagt-lite générique. Sa chaleur est la meilleure greffe sur B."
+      },
+      {
+        "name": "Ligne Claire — Minimal Premium (D)",
+        "score": 78,
+        "note": "La plus élégante, le plus faible risque de rendu, la ligne-fil-rouge est un beau liant 'keynote Apple'. Mais c'est la plus risquée pour la CLARTÉ débutant : une ligne qui se plie en icône est ambiguë, 'une ligne devient tout' peut lire joli-mais-vague. Le relais (l'orange ne disparaît jamais) est excellent à greffer."
+      },
+      {
+        "name": "Encre Vive — typo cinétique (C)",
+        "score": 68,
+        "note": "Punchy, scroll-stop, lisible son coupé. MAIS la typo cinétique pleine est LE look le plus saturé sur l'explainer IA TikTok/YT 2026 -> plus haut risque cliché. Elle DIT au lieu de MONTRER (la plus faible pour prouver le produit). Le calage wipe<->syllabe est le plus fragile en pipeline edge-tts déterministe. À garder : rareté de l'orange + mot-clé surdimensionné."
+      }
+    ]
+  }
+}

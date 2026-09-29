@@ -1,0 +1,240 @@
+[
+ {
+  "type": "title",
+  "vo": "Commençons par les hooks. Un hook, c'est un petit programme que Claude Code lance automatiquement à des moments clés. Sécurité, automatisation, logging : y a des cas partout.",
+  "title": "Les hooks",
+  "subtitle": "Du code qui se déclenche tout seul aux moments clés"
+ },
+ {
+  "type": "statement",
+  "vo": "Par exemple, tu peux créer un hook qui s'exécute AVANT que Claude Code utilise un outil. Bloque la commande, log l'action, ou transforme les paramètres.",
+  "keyword": "PreToolUse",
+  "lead": "Un hook qui s'exécute avant chaque outil"
+ },
+ {
+  "type": "cards",
+  "vo": "Ou APRÈS l'outil s'exécute. Ou quand une session démarre. Ou à la fin. Il existe plusieurs événements différents où tu peux brancher du code.",
+  "cards": [
+   {
+    "label": "PreToolUse",
+    "sub": "avant l'outil"
+   },
+   {
+    "label": "PostToolUse",
+    "sub": "après l'outil"
+   },
+   {
+    "label": "SessionStart",
+    "sub": "au démarrage"
+   },
+   {
+    "label": "Stop",
+    "sub": "à la fin"
+   }
+  ],
+  "caption": "Plusieurs événements où brancher ton code"
+ },
+ {
+  "type": "terminal",
+  "vo": "Pourquoi faire ? Sécurité, d'abord. Tu peux créer un hook qui bloque certaines commandes dangereuses. Exit code 2 : l'outil ne s'exécute pas.",
+  "term": [
+   {
+    "text": "$ rm -rf /",
+    "kind": "cmd"
+   },
+   {
+    "text": "[PreToolUse] commande bloquee par le hook",
+    "kind": "out"
+   },
+   {
+    "text": "exit code 2 -> outil non execute",
+    "kind": "out"
+   }
+  ],
+  "caption": "Exit code 2 : la commande est bloquée"
+ },
+ {
+  "type": "code",
+  "vo": "Ou bien autoformatage. À chaque fois que Claude Code crée ou modifie un fichier, hop, on lance prettier automatiquement.",
+  "lines": [
+   "\"PostToolUse\": [{",
+   "  \"matcher\": \"Edit|Write\",",
+   "  \"command\": \"npx prettier --write $FICHIER\"",
+   "}]"
+  ],
+  "highlight": 2,
+  "caption": "À chaque fichier modifié, prettier passe"
+ },
+ {
+  "type": "statement",
+  "vo": "Ou logging. Chaque action de Claude est notée quelque part pour qu'tu puisses tracer ce qui s'est passé, qui a modifié quoi, et quand.",
+  "keyword": "logging",
+  "lead": "Chaque action notée : qui a modifié quoi, et quand"
+ },
+ {
+  "type": "tree",
+  "vo": "Les hooks se déclarent en JSON. Soit dans ton settings.json global, soit dans .claude/settings.json si tu veux qu'ils soient spécifiques au projet.",
+  "items": [
+   {
+    "label": "~/.claude/settings.json",
+    "hot": false
+   },
+   {
+    "label": ".claude/",
+    "hot": false
+   },
+   {
+    "label": ".claude/settings.json",
+    "hot": true
+   }
+  ],
+  "caption": "Global, ou spécifique au projet"
+ },
+ {
+  "type": "cards",
+  "vo": "Un hook peut être une commande shell, une requête HTTP, un appel à un outil MCP, ou même un eval LLM. C'est flexible et composable.",
+  "cards": [
+   {
+    "label": "command",
+    "sub": "shell"
+   },
+   {
+    "label": "http",
+    "sub": "requête"
+   },
+   {
+    "label": "mcp",
+    "sub": "appel outil"
+   },
+   {
+    "label": "llm",
+    "sub": "eval"
+   }
+  ],
+  "caption": "Flexible et composable"
+ },
+ {
+  "type": "cards",
+  "vo": "Les pièges ? Un : tes hooks peuvent être lents. Deux : si un hook crash, Claude Code attend. Trois : PreToolUse a un délai limité, donc garde ton hook rapide.",
+  "cards": [
+   {
+    "label": "Lenteur",
+    "sub": "hook trop long"
+   },
+   {
+    "label": "Crash",
+    "sub": "Claude Code attend"
+   },
+   {
+    "label": "Timeout",
+    "sub": "PreToolUse limité"
+   }
+  ],
+  "caption": "Trois pièges : garde ton hook rapide"
+ },
+ {
+  "type": "verb",
+  "vo": "Maintenant, changeons d'échelle. Et si tu voulais pas juste automatiser Claude Code, mais le piloter depuis ton propre code ? C'est là qu'arrive le Agent SDK.",
+  "verb": "PILOTE",
+  "body": "Plus seulement automatiser : piloter Claude depuis ton code."
+ },
+ {
+  "type": "code",
+  "vo": "Le Claude Code Agent SDK te donne tous les outils de Claude Code : lire des fichiers, les modifier, exécuter du bash, chercher des patterns, appeler le web. Tu les utilises depuis Python ou TypeScript, pas par le CLI.",
+  "lines": [
+   "from claude_agent_sdk import query, ClaudeAgentOptions",
+   "",
+   "async for message in query(",
+   "    prompt=\"corrige le bug dans auth.py\"",
+   "): print(message)"
+  ],
+  "highlight": 0,
+  "caption": "Le même toolkit, depuis Python ou TypeScript"
+ },
+ {
+  "type": "terminal",
+  "vo": "Imagine : tu écris un bot Slack qui reçoit un bug report. Le bot lance une instance du SDK, l'agent lit les fichiers, trouve le bug, crée un commit. Tout automatique.",
+  "term": [
+   {
+    "text": "[slack] bug report recu : #1042",
+    "kind": "out"
+   },
+   {
+    "text": "$ agent.run(\"trouve et corrige le bug\")",
+    "kind": "cmd"
+   },
+   {
+    "text": "lecture des fichiers... bug trouve",
+    "kind": "out"
+   },
+   {
+    "text": "commit cree : fix #1042",
+    "kind": "ok"
+   }
+  ],
+  "caption": "Bug report Slack, commit automatique"
+ },
+ {
+  "type": "diff",
+  "vo": "Ou une CI qui tourne la nuit. Tes tests crashent, l'agent SDK cherche pourquoi, propose un fix, relance les tests. La boucle se ferme automatiquement.",
+  "minus": [
+   "- return total + tax",
+   "FAIL  3 tests en echec"
+  ],
+  "plus": [
+   "+ return round(total + tax, 2)",
+   "PASS  tous les tests verts"
+  ],
+  "caption": "La nuit : l'agent fixe et relance, la boucle se ferme"
+ },
+ {
+  "type": "code",
+  "vo": "L'SDK gère les permissions exactement comme Claude Code. Tu dis « cet agent a droit à Read et Edit, mais pas à Bash ». Sécurité incluse dans le code.",
+  "lines": [
+   "options = ClaudeAgentOptions(",
+   "    allowed_tools=[\"Read\", \"Edit\"],",
+   "    disallowed_tools=[\"Bash\"]",
+   ")"
+  ],
+  "highlight": 2,
+  "caption": "Les permissions, directement dans le code"
+ },
+ {
+  "type": "code",
+  "vo": "Et les hooks ? Oui, ils marchent aussi dans l'SDK. Tu peux créer un hook de programmation, une fonction callback, pour logger, bloquer, ou transformer les actions de ton agent.",
+  "lines": [
+   "async def avant_outil(input, tool_id, ctx):",
+   "    journaliser(input)",
+   "    return {}",
+   "",
+   "hooks = {\"PreToolUse\": [avant_outil]}"
+  ],
+  "highlight": 0,
+  "caption": "Des hooks en code : de simples callbacks"
+ },
+ {
+  "type": "verb",
+  "vo": "Les sessions aussi. Tu peux créer une session, l'agent travaille, tu arrêtes, tu reprends plus tard avec tout le contexte préservé. Pas de perte d'info.",
+  "verb": "REPRENDS",
+  "body": "Mets en pause, reviens plus tard : le contexte est préservé."
+ },
+ {
+  "type": "recap",
+  "vo": "Voilà : hooks pour automatiser Claude Code à la CLI, et le SDK pour le piloter depuis ton code. Les deux te rendent productif à un autre niveau, à l'échelle.",
+  "chips": [
+   "hooks",
+   "Agent SDK",
+   "permissions",
+   "sessions",
+   "à l'échelle"
+  ],
+  "punch": "Automatiser à la CLI, piloter depuis ton code."
+ },
+ {
+  "type": "statement",
+  "vo": "Prochaine fois, on parle des skills et des sous-agents : comment spécialiser ton IA et la diviser en experts. Ça change tout.",
+  "keyword": "subagents",
+  "lead": "Prochain épisode : skills & sous-agents",
+  "isOutro": true
+ }
+]
