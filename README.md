@@ -45,7 +45,7 @@ python metadata.py        # titres, descriptions, chapitres
 SKILL.md, README.md, LICENSE
 make_course.py  make_teaser.py  add_sound.py  metadata.py
 render_frames.js  thumb.html  DIRECTIONS.json  package.json
-assets_sfx/   ding, pop, thunk, whoosh (.wav)
+assets_sfx/   vos sons ding, pop, thunk, whoosh (.wav) : non inclus, voir assets_sfx/LISEZ-MOI.md
 motion/       core.js, ide.html, gabarits A/C/D/T, data/ep01-05.json (exemples)
 ```
 
